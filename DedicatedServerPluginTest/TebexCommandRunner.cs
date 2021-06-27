@@ -113,8 +113,7 @@ namespace TebexSE
                 {
 
                     String commandToRun = buildCommand((string) command["command"], playerName, playerId);
-                    
-                    TebexSE.log("info", "Run command " + commandToRun);
+                                        
                     if ((int)command["conditions"]["delay"] > 0)
                     {
                         // Create a timer with a two second interval.
@@ -199,10 +198,12 @@ namespace TebexSE
         {
             if (TebexSE.Instance.getNotificationMode() == NotificationMode.ChatCommand)
             {
+                TebexSE.log("info", "Run command (chat) " + command);
                 //Send Chat
                 MyMultiplayer.Static.SendChatMessage(command, ChatChannel.GlobalScripted, 0, "TebexSE");
             } else
             {
+                TebexSE.log("info", "Run command (event) " + command);
                 //Send Event
                 TebexSE.tebexPurchaseEvent.purchaseReceived(command);
             }
