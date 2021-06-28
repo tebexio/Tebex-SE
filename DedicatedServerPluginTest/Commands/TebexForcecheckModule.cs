@@ -70,7 +70,7 @@ namespace TebexSE.Commands
                     if (playerOnline)
                     {
                         TebexSE.log("info", "Execute commands for " + (string) targetPlayer.DisplayName + "(ID: "+ steamId.ToString()+")");
-                        TebexCommandRunner.doOnlineCommands((int) player["id"], (string)targetPlayer.DisplayName, steamId.ToString());
+                        TebexCommandRunner.doOnlineCommands((int) player["id"], targetPlayer, steamId.ToString());
 
 
                     }

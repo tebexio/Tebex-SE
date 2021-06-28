@@ -5,6 +5,7 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using Sandbox.Engine.Multiplayer;
 using Sandbox.Game.Gui;
+using Sandbox.Game.World;
 
 namespace TebexSE
 {
@@ -90,9 +91,10 @@ namespace TebexSE
             wc.DownloadStringAsync(new Uri(url));
         }
 
-        public static void doOnlineCommands(int playerPluginId, string playerName, string playerId)
+        public static void doOnlineCommands(int playerPluginId, MyIdentity targetPlayer, string playerId)
         {
-            
+            string playerName = (string)targetPlayer.DisplayName;
+
             TebexSE.log("info", "Running online commands for "+playerName+" (" + playerId + ")");
             
             TebexApiClient wc = new TebexApiClient();
@@ -111,9 +113,16 @@ namespace TebexSE
                 
                 foreach (var command in commands.Children())
                 {
-
                     String commandToRun = buildCommand((string) command["command"], playerName, playerId);
-                                        
+                 
+                    //if ((int) command["conditions"]["slots"] > 0)
+                    //{
+                    //    Console.WriteLine("Max Invcentory: " + targetPlayer.Character.InventoryAggregate.MaxItemCount.ToString());
+                    //    Console.WriteLine("Currency Invcentory: " + targetPlayer.Character.InventoryAggregate.GetItemsCount().ToString());
+                    //    int availableSpace = targetPlayer.Character.InventoryAggregate.MaxItemCount - targetPlayer.Character.InventoryAggregate.GetItemsCount();
+                    //    Console.WriteLine("Available Space:" + availableSpace.ToString());
+
+                    //}
                     if ((int)command["conditions"]["delay"] > 0)
                     {
                         // Create a timer with a two second interval.
