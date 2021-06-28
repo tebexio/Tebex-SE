@@ -114,6 +114,8 @@ namespace TebexSE
                 foreach (var command in commands.Children())
                 {
                     String commandToRun = buildCommand((string) command["command"], playerName, playerId);
+
+                    Console.WriteLine(targetPlayer.Character.HasInventory.ToString());
                  
                     //if ((int) command["conditions"]["slots"] > 0)
                     //{

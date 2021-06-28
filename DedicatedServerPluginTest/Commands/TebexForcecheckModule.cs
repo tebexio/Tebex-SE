@@ -27,7 +27,7 @@ namespace TebexSE.Commands
         {
             if ((int) response["meta"]["next_check"] > 0)
             {
-                TebexSE.Instance.updatePeriod = (int) response["meta"]["next_check"];
+                TebexSE.Instance.updatePeriod = 30; // (int) response["meta"]["next_check"];
             }
             
             if ((bool) response["meta"]["execute_offline"])
