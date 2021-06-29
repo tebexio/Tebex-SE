@@ -12,12 +12,15 @@ using VRage.Utils;
 using static TebexSE.PatchController;
 using TebexSE.Commands;
 
-namespace TebexSE.Patches {
+namespace TebexSE.Patches
+{
     //Marks the class for further inspection by the controller
     [PatchingClass]
-    public class ChatPatch {
+    public class ChatPatch
+    {
 
-        public ChatPatch() {
+        public ChatPatch()
+        {
             //Constructor
         }
 
@@ -63,7 +66,7 @@ namespace TebexSE.Patches {
             if (messageText.StartsWith("!tebex:buy"))
             {
                 TebexBuyModule tebexBuy = new TebexBuyModule();
-                tebexBuy.TebexBuy(channel, steamUserID);
+                tebexBuy.TebexBuy(channel, targetId);
             }
 
 

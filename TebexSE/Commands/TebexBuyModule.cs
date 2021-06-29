@@ -7,9 +7,9 @@ namespace TebexSE.Commands
 {
     public class TebexBuyModule : TebexCommandModule
     {
-        public void TebexBuy(ChatChannel channel, ulong steamUserID)
+        public void TebexBuy(ChatChannel channel, long targetId)
         {
-            MyMultiplayer.Static.SendChatMessage("To support our server, please visit " + TebexSE.Instance.information.domain, channel, Sandbox.Game.Multiplayer.Sync.Players.TryGetIdentityId(steamUserID), "TebexSE");
+            MyMultiplayer.Static.SendChatMessage("To support our server, please visit " + TebexSE.Instance.information.domain, channel, targetId, "TebexSE");
         }
 
         public override void HandleResponse(JObject response)

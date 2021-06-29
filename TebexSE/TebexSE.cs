@@ -42,7 +42,7 @@ namespace TebexSE {
 
             Instance = this;
 
-            log("info", "Welcome to Tebex-SE v1.1.0");
+            log("info", "Welcome to Tebex-SE v1.1.1");
 
             secret = m_configuration.TebexSecret;
 

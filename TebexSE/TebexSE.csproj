@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD0EC966-0B1D-4E59-AA73-ECA710896BFC}</ProjectGuid>
+    <ProjectGuid>{7FA2C6DF-1CFB-4F59-9EA9-151AF3E26260}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TebexSE</RootNamespace>
