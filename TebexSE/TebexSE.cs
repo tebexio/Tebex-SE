@@ -11,6 +11,11 @@ using TebexSE.Models;
 using VRage.Plugins;
 using static TebexSE.PatchController;
 
+/**
+ * Tebex => Space Engineers Vanilla Plugin
+ * Author: Liam Wiltshire
+ * Contributions: Bishbash777#0465 - GH: bishbash777 - initial outline template and patching controller
+ */
 namespace TebexSE {
 
     //Notation by Bishbash777#0465
