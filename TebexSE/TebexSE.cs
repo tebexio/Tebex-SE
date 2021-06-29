@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Xml.Serialization;
 using TebexSE.Commands;
 using TebexSE.Models;
@@ -24,11 +25,12 @@ namespace TebexSE {
         private PluginConfiguration m_configuration;
 
         private DateTime lastUpdate = DateTime.Now;
-        public int updatePeriod = 10;
+        public int updatePeriod = 30;
         private string baseurl = "https://plugin.tebex.io/";
         public const ushort ConnectionId = 16103;
         private string secret = "";
 
+        private Timer timer;
         public WebstoreInfo information = new WebstoreInfo();
 
         public static TebexSE Instance { get; private set; }
@@ -59,19 +61,28 @@ namespace TebexSE {
                 TebexInfoModule tebexInfo = new TebexInfoModule();
                 tebexInfo.TebexInfo();
             }
-        }
 
-        //Called every gameupdate or 'Tick'
-        public void Update() {
-            if (lastUpdate.AddSeconds(updatePeriod) < DateTime.Now)
-            {
-                lastUpdate = DateTime.Now;
+            timer = new System.Timers.Timer();
+            timer.Interval = 30000;
+            timer.AutoReset = true;
+            timer.Elapsed += (c, e) => {
                 if (secret != "")
                 {
                     TebexForcecheckModule forcecheckModule = new TebexForcecheckModule();
                     forcecheckModule.TebexForcecheck();
                 }
-            }
+            };
+            timer.Start();
+        }
+
+        public void updateCheckPeriod(int periodInSeconds)
+        {
+            timer.Interval = periodInSeconds * 1000;
+        }
+
+        //Called every gameupdate or 'Tick'
+        public void Update() {
+
         }
 
         public void setSecret(string secret)
