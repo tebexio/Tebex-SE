@@ -49,7 +49,7 @@ namespace TebexSE {
 
             Instance = this;
 
-            log("info", "Welcome to Tebex-SE v1.1.1");
+            log("info", "Welcome to Tebex-SE v1.2.2");
 
             secret = m_configuration.TebexSecret;
 
@@ -60,6 +60,14 @@ namespace TebexSE {
             {
                 TebexInfoModule tebexInfo = new TebexInfoModule();
                 tebexInfo.TebexInfo();
+            }
+
+            if (TebexSE.Instance.getNotificationMode() == NotificationMode.ChatCommand)
+            {
+                log("info", "Purchase notification mode: ChatCommand");
+            } else
+            {
+                log("info", "Purchase notification mode: TebexPurchaseReceived event");
             }
 
             timer = new System.Timers.Timer();

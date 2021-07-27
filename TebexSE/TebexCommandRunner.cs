@@ -114,18 +114,9 @@ namespace TebexSE
                 foreach (var command in commands.Children())
                 {
                     String commandToRun = buildCommand((string) command["command"], playerName, playerId);
-                 
-                    //if ((int) command["conditions"]["slots"] > 0)
-                    //{
-                    //    Console.WriteLine("Max Invcentory: " + targetPlayer.Character.InventoryAggregate.MaxItemCount.ToString());
-                    //    Console.WriteLine("Currency Invcentory: " + targetPlayer.Character.InventoryAggregate.GetItemsCount().ToString());
-                    //    int availableSpace = targetPlayer.Character.InventoryAggregate.MaxItemCount - targetPlayer.Character.InventoryAggregate.GetItemsCount();
-                    //    Console.WriteLine("Available Space:" + availableSpace.ToString());
 
-                    //}
                     if ((int)command["conditions"]["delay"] > 0)
                     {
-                        // Create a timer with a two second interval.
                         var aTimer = new System.Timers.Timer((int)command["conditions"]["delay"] * 1000);
                         aTimer.Elapsed += (Object source, System.Timers.ElapsedEventArgs ev) =>
                         {
@@ -207,12 +198,10 @@ namespace TebexSE
         {
             if (TebexSE.Instance.getNotificationMode() == NotificationMode.ChatCommand)
             {
-                TebexSE.log("info", "Run command (chat) " + command);
                 //Send Chat
                 MyMultiplayer.Static.SendChatMessage(command, ChatChannel.GlobalScripted, 0, "TebexSE");
             } else
             {
-                TebexSE.log("info", "Run command (event) " + command);
                 //Send Event
                 TebexSE.tebexPurchaseEvent.purchaseReceived(command);
             }

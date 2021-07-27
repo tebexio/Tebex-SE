@@ -59,9 +59,9 @@ namespace TebexSE.Commands
                     MyIdentity targetPlayer = MySession.Static.Players.TryGetIdentity(identityId);
 
                     bool playerOnline = false;
-                    foreach (var onlinePlr in onlinePlayers)
+                    foreach (MyPlayer onlinePlr in onlinePlayers)
                     {
-                        if (onlinePlr.Id.SteamId == steamId)
+                        if (onlinePlr.Character != null && !onlinePlr.Character.IsDead && onlinePlr.Id.SteamId == steamId)
                         {
                             playerOnline = true;
                         }
