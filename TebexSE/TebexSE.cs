@@ -49,7 +49,7 @@ namespace TebexSE {
 
             Instance = this;
 
-            log("info", "Welcome to Tebex-SE v1.2.2");
+            log("info", "Welcome to Tebex-SE v1.3.0");
 
             secret = m_configuration.TebexSecret;
 

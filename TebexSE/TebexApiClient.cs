@@ -52,6 +52,27 @@ namespace TebexSE
             };
             this.DownloadStringAsync(new Uri(url));
         }
+
+        public void DoGet(string endpoint, Action<string> callback)
+        {
+            this.Headers.Add("X-Buycraft-Secret", plugin.getSecret());
+            String url = plugin.getBaseUrl() + endpoint;
+
+            this.DownloadStringCompleted += (sender, e) =>
+            {
+                if (!e.Cancelled && e.Error == null)
+                {                    
+                    callback(e.Result);
+                }
+                else
+                {
+                    TebexSE.log("error", "We are unable to process this API request.");
+                    TebexSE.log("error", e.ToString());
+                }
+                this.Dispose();
+            };
+            this.DownloadStringAsync(new Uri(url));
+        }
              
     }
 }

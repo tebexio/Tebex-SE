@@ -102,11 +102,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiCalls.cs" />
     <Compile Include="Commands\TebexCommandModule.cs" />
     <Compile Include="Commands\TebexBuyModule.cs" />
     <Compile Include="Commands\TebexForcecheckModule.cs" />
     <Compile Include="Commands\TebexInfoModule.cs" />
     <Compile Include="Commands\TebexSecretModule.cs" />
+    <Compile Include="Models\PlayerPurchase.cs" />
     <Compile Include="Models\WebstoreInfo.cs" />
     <Compile Include="TebexCommandRunner.cs" />
     <Compile Include="TebexPurchaseEvent.cs" />
